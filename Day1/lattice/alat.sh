@@ -12,6 +12,7 @@ rm -rf etot.dat stress.dat
 for m in {0..24}
   do
     alat=`echo "10.26254*(97.0/100.0+$m*0.0025)" | bc -l`
+    echo " Calculating a = $alat "
 cat > scf.in << EOF
 &control
     calculation='scf'
@@ -43,7 +44,7 @@ ATOMIC_POSITIONS {crystal}
 K_POINTS {automatic}
  8 8 8 1 1 1
 EOF
-pw.x  < scf.in > scf.out
+pw.x  < scf.in | tee scf.out
 te=`grep ! scf.out | tail -1 | awk '{print $5}'`
 sxx=`grep -A1 'l   s' scf.out|tail -1|awk '{print $4}'`
 echo "$alat  $sxx" >> stress.dat
