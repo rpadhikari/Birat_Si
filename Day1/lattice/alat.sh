@@ -42,7 +42,7 @@ ATOMIC_POSITIONS {crystal}
   Si  0.00    0.00  0.00
   Si  0.25    0.25  0.25
 K_POINTS {automatic}
- 8 8 8 1 1 1
+ 4 4 4 1 1 1
 EOF
 pw.x  < scf.in | tee scf.out
 te=`grep ! scf.out | tail -1 | awk '{print $5}'`
