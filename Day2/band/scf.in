@@ -3,7 +3,6 @@
     restart_mode='from_scratch'
     pseudo_dir = '../pseudo'
     outdir='./'
-    disk_io='none'
 /
 &system
     ibrav=2
